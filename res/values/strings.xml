@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SelfLog</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="menu_settings">Settings</string>
+    <string name="menu_database">data</string>
+    <string name="menu_viewData">View</string>
+    <string name="menu_misc">Misc</string>
+    <!-- 
+    <string name="serverURI">http://10.0.2.2:8080/easyxml/Actions.aspx?action=addFromMobile</string>
+    <string name="serverURI">http://192.168.1.100:8080/easyxml/Actions.aspx?action=addFromMobile</string>
+     -->
+    <string name="serverURI">http://easyxml.sinaapp.com/Actions.aspx?action=addFromMobile</string>
+    
+    <string name="databaseName">selfdata</string>
+    <string name="dropdatabasescript">
+        drop table if exists action;
+    </string>
+    <string name="databasescript">
+        create table action (
+        ID integer primary key autoincrement,
+        personName varchar(50),
+        itemName varchar(50),
+        fee decimal(8,2),
+        feeDate date,
+        fillDate date,
+        PCInfo varchar(50),
+        isPaid varchar(1),
+        payDate date,
+        itemType varchar(10),
+        isCommited varchar(1),
+        comment varchar(128));
+    </string>
+    
+    <string name="date">日期：</string>
+    <string name="item">事项：</string>
+    <string name="personName">姓名：</string>
+    <string name="fee">金额：</string>
+    <string name="feeType">类型：</string>
+    <string name="commit">提交</string>
+    <string name="cancel">取消</string>
+    <string name="item_commit">上传</string>
+    <string name="item_delete">删除</string>
+    <string name="comment">备注：</string>
+    
+    <string-array name="list_item">
+        <item>早饭</item>
+        <item>午饭</item>
+        <item>买菜</item>
+        <item>麻将</item>
+        <item>化工家</item>
+        <item>其他</item>
+    </string-array>
+    
+    <string-array name="list_person">
+        <item>CCH</item>
+        <item>LM</item>
+    </string-array>
+    
+    <string-array name="list_feeType">
+        <item>normal</item>
+        <item>investment</item>
+    </string-array>
+</resources>
