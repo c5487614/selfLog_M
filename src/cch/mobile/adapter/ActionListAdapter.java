@@ -57,22 +57,31 @@ public class ActionListAdapter extends BaseAdapter {
 	@Override
 	public long getItemId(int arg0) {
 		// TODO Auto-generated method stub
-		return 0;
+		return arg0;
 	}
 
 	@Override
 	public View getView(int position, View v, ViewGroup vg) {
 		// TODO Auto-generated method stub
+		ViewHolder vholder = null;
 		if(v==null){
 			v = LayoutInflater.from(context).inflate(resId, null);
+			vholder = new ViewHolder();
 			for(int i = 0; i< this.list.size();i++){
-				for(int j = 0; j < tos.length; j++){
-					TextView tv = (TextView) v.findViewById(tos[j]);
-					tv.setText(list.get(position).get(froms[j]).toString());
-					//v.setTag(tos[j], tv);
-				}
+				int j = 0;
+				TextView tv = (TextView) v.findViewById(tos[0]);
+				vholder.tvId = tv; 
+				tv = (TextView) v.findViewById(tos[1]);
+				vholder.tvfeeDate = tv;
+				tv = (TextView) v.findViewById(tos[2]);
+				vholder.tvitemName = tv;
+				tv = (TextView) v.findViewById(tos[3]);
+				vholder.tvFee = tv;
+				tv = (TextView) v.findViewById(tos[4]);
+				vholder.tvPersonName = tv;
+				v.setTag(vholder);
 			}
-			int id =Integer.parseInt(list.get(position).get("id").toString());
+			int id = Integer.parseInt(list.get(position).get("id").toString());
 			View btnDelete = v.findViewById(R.id.btn_item_delete);
 			if(btnDelete instanceof Button){
 				OnDeleteClick deleteClick = new OnDeleteClick(id);
@@ -84,8 +93,14 @@ public class ActionListAdapter extends BaseAdapter {
 				btnCommit.setOnClickListener(commitClick);
 			}
 		}else{
-//			v.getTag()
+			vholder = (ViewHolder) v.getTag();
+			vholder.resetHolder();
 		}
+		vholder.tvId.setText(list.get(position).get(froms[0]).toString());
+		vholder.tvfeeDate.setText(list.get(position).get(froms[1]).toString());
+		vholder.tvitemName.setText(list.get(position).get(froms[2]).toString());
+		vholder.tvFee.setText(list.get(position).get(froms[3]).toString());
+		vholder.tvPersonName.setText(list.get(position).get(froms[4]).toString());
 		return v;
 	}
 	
@@ -110,4 +125,19 @@ public class ActionListAdapter extends BaseAdapter {
 		return list;
 	}
 
+}
+class ViewHolder{
+	public TextView tvId;
+	public TextView tvfeeDate;
+	public TextView tvitemName;
+	public TextView tvFee;
+	public TextView tvPersonName;
+	
+	public void resetHolder(){
+		this.tvId.setText(null);
+		this.tvfeeDate.setText(null);
+		this.tvitemName.setText(null);
+		this.tvFee.setText(null);
+		this.tvPersonName.setText(null);
+	}
 }

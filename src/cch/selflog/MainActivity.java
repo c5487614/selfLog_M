@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
     	
     	model.setFillDate(new Date());
     	model.setIsCommited("N");
-    	model.setIsPaid("N");
+    	model.setIsPaid("0");
     	
     	Spinner spinner_itemName = (Spinner) this.findViewById(R.id.cbox_item);
     	model.setItemName(spinner_itemName.getSelectedItem().toString());

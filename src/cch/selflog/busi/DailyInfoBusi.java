@@ -49,7 +49,7 @@ public class DailyInfoBusi {
 	public DailyInfo getOne(int id){
 		Cursor cursor = this.db.getDB().query("action", new String[]{"id","personName","itemName","fee","feeDate","fillDate",
 				"PCInfo","isPaid","itemType","isCommited","comment"}, 
-				"id = ?", new String[]{"" + id}, null, null, null);
+				"id = ? and isCommited = ?", new String[]{"" + id,"N"}, null, null, null);
 		cursor.moveToFirst();
 		DailyInfo model = this.cursor2Model(cursor);
 		return model;
@@ -60,11 +60,15 @@ public class DailyInfoBusi {
 		httpPost.setHeader("Accept-Encoding", "gzip,deflate,sdch");
 		httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		if(model.getItemName().trim().equals("ÆäËû")){
+			String newItemName = model.getComment();
+			model.setItemName(newItemName);
+		}
 		nvps.add(new BasicNameValuePair("daily_feeDate",FormatUtil.dateFormat("yyyy-MM-dd",model.getFeeDate())));
 		nvps.add(new BasicNameValuePair("daily_item",model.getItemName()));
 		nvps.add(new BasicNameValuePair("daily_name",model.getPersonName()));
 		nvps.add(new BasicNameValuePair("daily_money",FormatUtil.double2String(model.getFee())));
-		nvps.add(new BasicNameValuePair("daily_fillDate",FormatUtil.dateFormat("yyyy-MM-dd",model.getFillDate())));
+		nvps.add(new BasicNameValuePair("daily_fillDate",FormatUtil.dateFormat("yyyy-MM-dd HH:mm:ss",model.getFillDate())));
 		nvps.add(new BasicNameValuePair("daily_isPaid",model.getIsPaid()));
 		nvps.add(new BasicNameValuePair("daily_itemType",model.getItemType()));
 		nvps.add(new BasicNameValuePair("daily_comment","Mobile:"+model.getComment()));
