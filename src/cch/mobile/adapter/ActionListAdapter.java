@@ -87,11 +87,14 @@ public class ActionListAdapter extends BaseAdapter {
 				OnDeleteClick deleteClick = new OnDeleteClick(id);
 				btnDelete.setOnClickListener(deleteClick);
 			}
+			vholder.btnDelete = (Button) btnDelete;
 			View btnCommit = v.findViewById(R.id.btn_item_commit);
 			if(btnCommit instanceof Button){
 				OnCommitClick commitClick = new OnCommitClick(id);
 				btnCommit.setOnClickListener(commitClick);
 			}
+			vholder.btnCommit = (Button) btnCommit;
+			
 		}else{
 			vholder = (ViewHolder) v.getTag();
 			vholder.resetHolder();
@@ -132,12 +135,15 @@ class ViewHolder{
 	public TextView tvitemName;
 	public TextView tvFee;
 	public TextView tvPersonName;
-	
+	public Button btnDelete;
+	public Button btnCommit;
 	public void resetHolder(){
 		this.tvId.setText(null);
 		this.tvfeeDate.setText(null);
 		this.tvitemName.setText(null);
 		this.tvFee.setText(null);
 		this.tvPersonName.setText(null);
+//		this.btnDelete.setOnClickListener(null);
+//		this.btnCommit.setOnClickListener(null);
 	}
 }

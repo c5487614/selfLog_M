@@ -10,10 +10,11 @@
     <string name="menu_misc">Misc</string>
     <!-- 
     <string name="serverURI">http://10.0.2.2:8080/easyxml/Actions.aspx?action=addFromMobile</string>
-    <string name="serverURI">http://192.168.1.100:8080/easyxml/Actions.aspx?action=addFromMobile</string>
-     -->
-    <string name="serverURI">http://easyxml.sinaapp.com/Actions.aspx?action=addFromMobile</string>
     
+    <string name="serverURI">http://easyxml.sinaapp.com/Actions.aspx?action=addFromMobile</string>
+     -->
+    
+    <string name="serverURI">http://192.168.1.104:8080/easyxml/Actions.aspx?action=addFromMobile</string>
     <string name="databaseName">selfdata</string>
     <string name="dropdatabasescript">
         drop table if exists action;
@@ -48,8 +49,12 @@
     <string-array name="list_item">
         <item>早饭</item>
         <item>中饭</item>
+        <item>晚饭</item>
         <item>买菜</item>
         <item>麻将</item>
+        <item>超市</item>
+        <item>网购</item>
+        <item>火车票</item>
         <item>化工家</item>
         <item>其他</item>
     </string-array>

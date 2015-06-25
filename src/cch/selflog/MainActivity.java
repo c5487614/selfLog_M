@@ -2,32 +2,37 @@ package cch.selflog;
 
 import java.util.Date;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import cch.mobile.util.DBUtil;
 import cch.mobile.util.FormatUtil;
 import cch.mobile.util.SpinnerUtil;
 import cch.selflog.busi.DailyInfoBusi;
 import cch.selflog.model.DailyInfo;
+public class MainActivity extends Activity implements OnTouchListener,OnGestureListener{
 
-public class MainActivity extends ActionBarActivity {
-
+	GestureDetector mygesture;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+        //SlidingMenu sm = getSlidingMenu();
+        mygesture = new GestureDetector(this);
         try {
 			u_init();
 		} catch (Exception e) {
@@ -71,6 +76,9 @@ public class MainActivity extends ActionBarActivity {
 			}
     		
     	});
+    	View v = (View)this.findViewById(R.id.content_test);
+    	v.setOnTouchListener(this);
+    	v.setLongClickable(true);
     	
     }
     @Override
@@ -132,4 +140,59 @@ public class MainActivity extends ActionBarActivity {
     	
     	return model;
     }
+
+	@Override
+	public boolean onDown(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onFling(MotionEvent me1, MotionEvent me2, float arg2,
+			float arg3) {
+		// TODO Auto-generated method stub
+//		Toast.makeText(this, me1.getX()+"", 500).show();
+		if(me1.getX()-me2.getX()>50){
+//			Toast.makeText(this, "left", 500).show();
+			Intent intent = new Intent();
+        	intent.setClass(this, ActionListActivity.class);
+        	this.startActivity(intent);
+		}
+		if(me2.getX()-me1.getX()>50){
+			
+		}
+		return false;
+	}
+
+	@Override
+	public void onLongPress(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2,
+			float arg3) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onShowPress(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean onSingleTapUp(MotionEvent arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onTouch(View arg0, MotionEvent arg1) {
+		// TODO Auto-generated method stub
+		Log.i("touch","touch");
+		return mygesture.onTouchEvent(arg1);
+	}
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#3c3c3c"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3c3c3c"
+    android:orientation="vertical" >
+
+
+        
+    <RelativeLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#3c3c3c"
+        android:layout_marginBottom="0dp"
+         >
+        <ImageView
+        android:id="@+id/iBtnUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/menu_03" />
+       
+        
+    </RelativeLayout>
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#3c3c3c"
+         >
+        <TextView
+        android:id="@+id/tv_userDN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="证书DN项"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="20dp"
+        />
+    </RelativeLayout>
+    <View android:layout_height="1px"
+	    android:layout_width="fill_parent"
+	    android:background="#5b595a" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#424041"
+         >
+        <TextView
+        android:id="@+id/menu_cert_manager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="证书管理菜单"
+        android:textSize="16sp"
+        android:textColor="#929091"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        />
+    </RelativeLayout>
+    <View android:layout_height="1px"
+	    android:layout_width="fill_parent"
+	    android:background="#343434" />
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+
+		<ListView
+		    android:id="@+id/listview1" 
+		    android:background="#505050"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content" >
+		</ListView>
+
+	</LinearLayout>
+</LinearLayout>
+</RelativeLayout>
